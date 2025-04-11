@@ -8,7 +8,7 @@ class Solution:
         n = len(nums)
         i = 1
         while i<=n:
-            
+            if i not in s: res.append(i)
             i+=1
         return res
 ```
@@ -42,5 +42,22 @@ var findDisappearedNumbers = function(nums) {
 
 # JAVA
 ```java
+class Solution {
 
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        List<Integer> res = new ArrayList<>();
+        Set<Integer> set = new HashSet<>();
+
+        for (int i : nums)
+            set.add(i);
+
+        int l = nums.length;
+        for (int i = 1; i <= l; i++) {
+            if (!set.contains(i))
+                res.add(i);
+        }
+
+        return res;
+    }
+}
 ```

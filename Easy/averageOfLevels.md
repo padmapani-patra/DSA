@@ -30,6 +30,7 @@ class Solution:
 <br />
 
 # JS
+
 ```js
 /**
  * Definition for a binary tree node.
@@ -44,28 +45,28 @@ class Solution:
  * @return {number[]}
  */
 
-var averageOfLevels = function(root) {
-    if(!root) return [];
-    let resAverages = [];
-    let queue = []; // required for tree traversal
-    queue.push(root);
+var averageOfLevels = function (root) {
+  if (!root) return [];
+  let resAverages = [];
+  let queue = []; // required for tree traversal
+  queue.push(root);
 
-    while(queue.length) {
-        const next = []; // keeps track of nodes from each level
-        let sum = 0;
-        // iterate nodes from each level
-        for(const node of queue) {
-            sum += node.val;
-            if(node.left) next.push(node.left);
-            if(node.right) next.push(node.right);
-        }
-        // sum of nodes divided by no. of non-null nodes present in each level
-        const avg = sum / queue.length;
-        resAverages.push(avg);
-        // queue has nodes from the next level
-        queue = next;
+  while (queue.length) {
+    const next = []; // keeps track of nodes from each level
+    let sum = 0;
+    // iterate nodes from each level
+    for (const node of queue) {
+      sum += node.val;
+      if (node.left) next.push(node.left);
+      if (node.right) next.push(node.right);
     }
-    return resAverages;
+    // sum of nodes divided by no. of non-null nodes present in each level
+    const avg = sum / queue.length;
+    resAverages.push(avg);
+    // queue has nodes from the next level
+    queue = next;
+  }
+  return resAverages;
 };
 ```
 
@@ -74,6 +75,51 @@ var averageOfLevels = function(root) {
 <br />
 
 # JAVA
-```java
 
+```java
+import java.util.*;
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode() {}
+
+    TreeNode(int val) {
+        this.val = val;
+    }
+
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}
+
+class Solution{
+    public List<Double> averageOfLevels (TreeNode root){
+        List<Double> res = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+
+        queue.add(root);
+
+        while(!queue.isEmpty()){
+            int l = queue.size();
+
+            double sum = 0;
+
+            for(int i = 0; i<l; i++){
+                TreeNode node = queue.poll();
+
+                sum += node.val;
+                if (node.left != null) queue.add(node.left);
+                if (node.right!= null) queue.add(node.right);
+            }
+
+            res.add(sum/l);
+        }
+        return res;
+    }
+}
 ```

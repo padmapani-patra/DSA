@@ -50,5 +50,20 @@ var invertTree = function(root) {
 
 # JAVA
 ```java
+class Solution {
+    public TreeNode invertTree(TreeNode root) {
+        if (root == null) return null;
 
+        // Recursively invert the left and right subtrees
+        invertTree(root.left);
+        invertTree(root.right);
+
+        // Swap the left and right children
+        TreeNode temp = root.left;
+        root.left = root.right;
+        root.right = temp;
+
+        return root;
+    }
+}
 ```

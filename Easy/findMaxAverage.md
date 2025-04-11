@@ -41,5 +41,24 @@ var findMaxAverage = function(nums, k) {
 
 # JAVA
 ```java
+class Solution {
+    public double findMaxAverage(int[] nums, int k) {
+        // Calculate the sum of the first window of size k
+        int window = 0;
+        for (int i = 0; i < k; i++) {
+            window += nums[i];
+        }
 
+        int res = window;
+
+        // Slide the window across the array
+        for (int i = 1; i <= nums.length - k; i++) {
+            window = window - nums[i - 1] + nums[i + k - 1];
+            res = Math.max(res, window);
+        }
+
+        // Return the maximum average
+        return (double) res / k;
+    }
+}
 ```

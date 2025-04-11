@@ -60,5 +60,43 @@ var diameterOfBinaryTree = function(root) {
 
 # JAVA
 ```java
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
 
+    TreeNode() {}
+
+    TreeNode(int val) {
+        this.val = val;
+    }
+
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}
+
+class Solution {
+    private int diameter = 0;
+
+    public int diameterOfBinaryTree(TreeNode root) {
+        dfs(root);
+        return diameter;
+    }
+
+    private int dfs(TreeNode node) {
+        if (node == null) return 0;
+
+        int left = dfs(node.left);  // Height of the left subtree
+        int right = dfs(node.right); // Height of the right subtree
+
+        // Update the diameter (maximum path length)
+        diameter = Math.max(diameter, left + right);
+
+        // Return the height of the current node
+        return 1 + Math.max(left, right);
+    }
+}
 ```

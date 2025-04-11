@@ -54,5 +54,27 @@ var isPalindrome = function(head) {
 
 # JAVA
 ```java
+class Solution {
+    private ListNode left;
 
+    public boolean isPalindrome(ListNode head) {
+        left = head;
+        return traverse(head);
+    }
+
+    private boolean traverse(ListNode right) {
+        if (right == null) return true;
+
+        // Recursive call to reach the end of the list
+        boolean res = traverse(right.next);
+
+        // Check if the current left and right values are equal
+        res = res && (right.val == left.val);
+
+        // Move the left pointer forward
+        left = left.next;
+
+        return res;
+    }
+}
 ```
