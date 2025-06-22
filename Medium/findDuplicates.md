@@ -48,4 +48,22 @@ var findDuplicates = function(nums) {
 # JAVA
 ```java
 
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+  public List<Integer> findDuplicates(int[] nums) {
+    List<Integer> res = new ArrayList<Integer>();
+
+    for (int n : nums) {
+      int index = Math.abs(n) - 1;
+      if (nums[index] < 0)
+        res.add(n);
+      else
+        nums[index] = -nums[index];
+    }
+
+    return res;
+  }
+}
 ```

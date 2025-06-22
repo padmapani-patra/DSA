@@ -24,3 +24,53 @@ class Solution:
                 curr_level, next_level = next_level, curr_level
                 left_to_right = not left_to_right
         return res
+    
+
+"""
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
+class TreeNode {
+  int val;
+  TreeNode left;
+  TreeNode right;
+
+  TreeNode(int val) {
+    this.val = val;
+  }
+}
+
+class Solution {
+  public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+    List<List<Integer>> res = new ArrayList<>();
+
+    Queue<TreeNode> queue = new LinkedList<>();
+    queue.add(root);
+    boolean leftToRight = true;
+
+    while (!queue.isEmpty()) {
+      int size = queue.size();
+      LinkedList<Integer> level = new LinkedList<>();
+      for (int i = 0; i < size; i++) {
+        TreeNode node = queue.poll();
+        if (leftToRight)
+          level.addLast(node.val);
+        else
+          level.addFirst(node.val);
+
+        if (node.left != null)
+          queue.add(node.left);
+        if (node.right != null)
+          queue.add(node.right);
+      }
+      res.add(level);
+      leftToRight = !leftToRight;
+    }
+
+    return res;
+  }
+}
+
+"""

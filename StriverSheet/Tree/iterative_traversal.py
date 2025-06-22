@@ -38,3 +38,84 @@ def iterative_in_order_traversal(root):
         curr = curr.right
     return res
 
+
+
+
+# import java.util.ArrayList;
+# import java.util.List;
+# import java.util.Stack;
+
+# class TreeNode {
+#   int val;
+#   TreeNode left;
+#   TreeNode right;
+
+#   TreeNode(int val) {
+#     this.val = val;
+#   }
+# }
+
+# class Solution {
+#   public List<Integer> preOrder(TreeNode root) {
+#     List<Integer> res = new ArrayList<>();
+#     if (root == null)
+#       return res;
+#     Stack<TreeNode> stack = new Stack<>();
+#     stack.push(root);
+
+#     while (!stack.isEmpty()) {
+#       TreeNode node = stack.pop();
+#       res.add(node.val);
+
+#       if (node.right != null)
+#         stack.push(node.right);
+#       if (node.left != null)
+#         stack.push(node.left);
+#     }
+#     return res;
+#   }
+
+#   public List<Integer> postOrder(TreeNode root) {
+#     List<Integer> res = new ArrayList<>();
+#     if (root == null)
+#       return res;
+#     Stack<TreeNode> stack = new Stack<>();
+#     Stack<TreeNode> output = new Stack<>();
+#     stack.push(root);
+
+#     while (!stack.isEmpty()) {
+#       TreeNode node = stack.pop();
+#       output.push(node);
+
+#       if (node.right != null)
+#         stack.push(node.right);
+#       if (node.left != null)
+#         stack.push(node.left);
+#     }
+
+#     while (!output.isEmpty()) {
+#       res.add(output.pop().val);
+#     }
+
+#     return res;
+#   }
+
+#   public List<Integer> inOrder(TreeNode root) {
+#     List<Integer> res = new ArrayList<>();
+#     if (root == null)
+#       return res;
+#     Stack<TreeNode> stack = new Stack<>();
+#     TreeNode curr = root;
+#     while (!stack.isEmpty() || curr != null) {
+#       while (curr != null) {
+#         stack.push(curr);
+#         curr = curr.left;
+#       }
+
+#       curr = stack.pop();
+#       res.add(curr.val);
+#       curr = curr.right;
+#     }
+#     return res;
+#   }
+# }
